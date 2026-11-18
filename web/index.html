@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mauna Loa CO₂ Explorer</title>
+<link rel="stylesheet" href="style.css">
+<script type="module" src="app.js"></script>
+</head>
+<body>
+<main>
+<header><p class="source">NOAA GLOBAL MONITORING LABORATORY</p>
+<h1>Mauna Loa CO₂ Explorer</h1>
+<p>How has atmospheric CO₂ changed since 1958? Zoom into a few years to see the seasonal cycle, or compare both series across the entire record.</p></header>
+<section aria-label="Explore the record">
+<fieldset id="controls" disabled>
+<label>Start month <input type="month" id="start" placeholder="YYYY-MM" pattern="[0-9]{4}-(0[1-9]|1[0-2])"></label>
+<label>End month <input type="month" id="end" placeholder="YYYY-MM" pattern="[0-9]{4}-(0[1-9]|1[0-2])"></label>
+<label>Series <select id="series"><option value="both">Both series</option><option value="monthly">Monthly mean</option><option value="adjusted">Seasonally adjusted</option></select></label>
+<button id="reset" type="button">Reset dates</button>
+</fieldset>
+<p id="status" role="status">Loading NOAA observations…</p>
+<div id="result" hidden>
+<ul id="legend" aria-label="Chart legend"></ul>
+<canvas id="chart" role="img" aria-label="Atmospheric CO₂ over time in parts per million. Values are available in the table below." aria-describedby="status"></canvas>
+<details><summary>View monthly values</summary>
+<table><caption>CO₂ concentration in parts per million (ppm)</caption><thead id="head"></thead><tbody id="values"></tbody></table>
+</details>
+</div>
+</section>
+<footer>
+<p>NOAA includes earlier observations from the Scripps Institution of Oceanography. NOAA used observations from Maunakea from December 2022 through July 4, 2023, after Mauna Loa’s eruption.</p>
+<p>The published series includes estimated values for some missing months. Seasonally adjusted values use NOAA’s adjustment. The chart leaves a gap when a concentration is unavailable.</p>
+<p><a href="https://gml.noaa.gov/ccgg/trends/data.html">NOAA data and documentation</a> · <a href="noaa-co2.txt">Download the source snapshot</a></p>
+</footer>
+</main>
+</body>
+</html>
